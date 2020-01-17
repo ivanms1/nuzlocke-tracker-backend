@@ -18,7 +18,6 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const cors_1 = __importDefault(require("cors"));
 const jsonwebtoken_1 = require("jsonwebtoken");
-const path_1 = __importDefault(require("path"));
 require("dotenv/config");
 const typeDefs_1 = __importDefault(require("./typeDefs"));
 const resolvers_1 = __importDefault(require("./resolvers"));
@@ -64,10 +63,6 @@ app.post('/refresh-token', (req, res) => __awaiter(void 0, void 0, void 0, funct
     auth_1.sendRefreshToken(res, auth_1.createRefreshToken(user));
     return res.send({ ok: true, accessToken: auth_1.createAccessToken(user) });
 }));
-app.use(express_1.default.static('public'));
-app.get('*', (req, res) => {
-    res.sendFile(path_1.default.resolve(__dirname, 'public', 'index.html'));
-});
 server.applyMiddleware({
     app,
     cors: false
