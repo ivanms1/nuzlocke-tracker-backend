@@ -63,6 +63,7 @@ const NuzlockeSchema = apollo_server_express_1.gql `
     createNuzlocke(input: NuzlockeInput!): Nuzlocke
     addPokemon(id: ID!, pokemon: NuzlockePokemonInput!): Nuzlocke
     updatePokemon(id: ID!, pokemon: NuzlockePokemonInput!): Nuzlocke
+    deletePokemon(id: ID!, pokemonId: ID!): ID
   }
 `;
 exports.default = NuzlockeSchema;

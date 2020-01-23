@@ -66,6 +66,13 @@ const NuzlockeResolvers = {
                 .populate({ path: 'pokemons.pokemon', model: 'pokemon' })
                 .populate({ path: 'pokemons.partner', model: 'pokemon' });
             return updatedNuzlocke;
+        }),
+        deletePokemon: (_, { id, pokemonId }, { isAuth }) => __awaiter(void 0, void 0, void 0, function* () {
+            if (!isAuth) {
+                throw Error('Not Authorized');
+            }
+            yield NuzlockeModel_1.default.findOneAndUpdate({ _id: id }, { $pull: { pokemons: { _id: pokemonId } } });
+            return pokemonId;
         })
     }
 };

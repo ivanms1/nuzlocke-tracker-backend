@@ -35,6 +35,7 @@ const UserSchema = apollo_server_express_1.gql `
     signUp(input: SignUpInput!): LoginToken
     login(input: LoginInput!): LoginToken
     updateUser(input: SignUpInput!): User
+    logout: Boolean
   }
 `;
 exports.default = UserSchema;

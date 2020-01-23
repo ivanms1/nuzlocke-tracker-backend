@@ -61,14 +61,19 @@ const UserResolvers = {
                 throw new Error('Invalid credentials');
             }
             const token = auth_1.createAccessToken(user);
-            res.cookie('nuzlocke-helper', auth_1.createRefreshToken(user), {
-                httpOnly: true
-            });
+            auth_1.sendRefreshToken(res, auth_1.createRefreshToken(user));
             return {
                 userId: user.id,
                 token,
                 tokenExpiration: 3
             };
+        }),
+        logout: (_, __, { res }) => __awaiter(void 0, void 0, void 0, function* () {
+            res.clearCookie('nuzlocke-helper', {
+                httpOnly: true,
+                path: '/refresh-token'
+            });
+            return true;
         })
     }
 };
