@@ -40,7 +40,7 @@ const server = new apollo_server_express_1.ApolloServer({
 const app = express_1.default();
 app.use(cookie_parser_1.default());
 app.use(cors_1.default({
-    origin: 'https://nuzlocketracker.netlify.com',
+    origin: 'https://nuzlocketracker.netlify.app',
     credentials: true
 }));
 app.post('/refresh-token', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
